@@ -1,0 +1,9 @@
+com\example\Courier.class
+com\example\CourierClient.class
+com\example\OrderClient.class
+com\example\ScooterRestClient.class
+com\example\ScooterColor.class
+com\example\RestAssuredClient.class
+com\example\CourierCredentials.class
+com\example\CourierGenerator.class
+com\example\Order.class
