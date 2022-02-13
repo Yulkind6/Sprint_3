@@ -40,7 +40,7 @@ public class Order {
 
     public Order setColor(List<ScooterColor> color) {
         this.color = color;
-                return this;
+        return this;
     }
 }
 

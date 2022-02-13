@@ -3,7 +3,6 @@ package com.example;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class CourierGenerator {
-
     private static final int DATA_SIZE = 10;
 
     public static Courier getRandom() {

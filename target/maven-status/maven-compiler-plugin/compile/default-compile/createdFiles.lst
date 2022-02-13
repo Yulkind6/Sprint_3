@@ -7,3 +7,4 @@ com\example\RestAssuredClient.class
 com\example\CourierCredentials.class
 com\example\CourierGenerator.class
 com\example\Order.class
+com\example\OrdersClient.class

@@ -11,7 +11,6 @@ public class Courier {
     public Courier() {
     }
 
-
     public Courier(String login, String password, String firstName) {
         this.login = login;
         this.password = password;
@@ -36,17 +35,12 @@ public class Courier {
     public static Courier getWithLoginOnly() {
         return new Courier().setLogin(RandomStringUtils.randomAlphabetic(10));
     }
+
     public static Courier getWithPasswordOnly() {
         return new Courier().setPassword(RandomStringUtils.randomAlphabetic(10));
     }
-    public static Courier getWithPasswordAndLogin() {
-        return new Courier().setLogin(RandomStringUtils.randomAlphabetic(10));
-    }
-    public static Courier getRandom() {
-        final String login = RandomStringUtils.randomAlphabetic(10);
-        final String password = RandomStringUtils.randomAlphabetic(10);
-        final String firstName = RandomStringUtils.randomAlphabetic(10);
-        return new Courier(login, password, firstName);
+
+    public static Courier getWithFirstNameOnly() {
+        return new Courier().setFirstName(RandomStringUtils.randomAlphabetic(10));
     }
 }
-

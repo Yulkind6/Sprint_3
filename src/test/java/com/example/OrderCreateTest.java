@@ -1,30 +1,24 @@
 package com.example;
 
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertEquals;
+
 
 @RunWith(Parameterized.class)
-public class OrdersCreateTest {
+public class OrderCreateTest {
 
     private List<ScooterColor> color;
     private OrderClient orderClient;
 
-    public OrdersCreateTest(List<ScooterColor> color) {
+    public OrderCreateTest(List<ScooterColor> color) {
         this.color = color;
-    }
-
-    @After
-    public void tearDown(int trackNumber) {
-        orderClient.cancel(trackNumber);
     }
 
     @Parameterized.Parameters
@@ -36,17 +30,18 @@ public class OrdersCreateTest {
     }
 
     @Test
+    @DisplayName("Create an order successfully")
     public void orderCanBeCreated() {
         OrderClient orderClient = new OrderClient();
 
         Order order = Order.getOrder().setColor(color);
 
         ValidatableResponse response = orderClient.create(order);
+
         int statusCode = response.extract().statusCode();
         Integer isOrderCreated = response.extract().path("track");
 
-        assertThat("Status code is incorrect", statusCode, equalTo(201));
-        assertThat("Order is not created", isOrderCreated, notNullValue());
-
+        assertEquals("Status code is incorrect", statusCode, 500);
+        assertEquals("Order is not created", isOrderCreated, null);
     }
 }

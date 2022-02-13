@@ -5,25 +5,21 @@ import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;
 
-public class CourierClient extends RestAssuredClient {
+public class CourierClient extends ScooterRestClient {
 
     private static final String COURIER_PATH = "api/v1/courier/";
 
-    @Step
+    @Step("Create courier {courier}")
     public ValidatableResponse create(Courier courier) {
         return given()
                 .spec(getBaseSpec())
                 .body(courier)
                 .when()
                 .post(COURIER_PATH)
-                .then()
-                .assertThat()
-                .statusCode(201)
-                .extract()
-                .path("ok");
+                .then();
     }
 
-    @Step
+    @Step("Login as {courierCredentials}")
     public int login(CourierCredentials credentials) {
         return given()
                 .spec(getBaseSpec())
@@ -37,7 +33,7 @@ public class CourierClient extends RestAssuredClient {
                 .path("id");
     }
 
-    @Step
+    @Step("Delete courier {courierId}")
     public boolean delete(int courierId) {
         return given()
                 .spec(getBaseSpec())

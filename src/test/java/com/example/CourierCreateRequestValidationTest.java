@@ -1,9 +1,13 @@
 package com.example;
 
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
 public class CourierCreateRequestValidationTest {
@@ -20,27 +24,53 @@ public class CourierCreateRequestValidationTest {
 
     @Parameterized.Parameters
     public static Object[][] getTestData() {
-        return new Object[][] {
+        return new Object[][]{
                 {Courier.getWithLoginOnly(), 400, "Error"},
                 {Courier.getWithPasswordOnly(), 400, "Error"},
-                {Courier.getWithPasswordAndLogin(), 201, null} //почистить за собой
+                {Courier.getWithFirstNameOnly(), 400, "Error"}
         };
     }
 
     @Test
-    public void invalidRequestIsNotAllowed() {
+    @DisplayName("Courier cannot be created with login only")
+    public void invalidRequestIsNotAllowed1() {
         Courier courier = Courier.getWithLoginOnly();
 
         ValidatableResponse response = new CourierClient().create(courier);
 
-//        asserts
+        int statusCode = response.extract().statusCode();
+        boolean message = response.extract().path("message");
 
+        assertEquals("Status code is incorrect", statusCode, 404);
+        assertTrue("Courier is not created", message);
+    }
 
+    @Test
+    @DisplayName("Courier cannot be created with password only")
+    public void invalidRequestIsNotAllowed2() {
+        Courier courier = Courier.getWithPasswordOnly();
 
+        ValidatableResponse response = new CourierClient().create(courier);
 
-        String message = response.extract().path("message");
+        int statusCode = response.extract().statusCode();
+        boolean message = response.extract().path("message");
 
-        assert message == null;
+        assertEquals("Status code is incorrect", statusCode, 404);
+        assertTrue("Courier is not created", message);
+
+    }
+    @Test
+    @DisplayName("Courier cannot be created with first name only")
+    public void invalidRequestIsNotAllowed3() {
+        Courier courier = Courier.getWithFirstNameOnly();
+
+        ValidatableResponse response = new CourierClient().create(courier);
+
+        int statusCode = response.extract().statusCode();
+        boolean message = response.extract().path("message");
+
+        assertEquals("Status code is incorrect", statusCode, 404);
+        assertTrue("Courier is not created", message);
     }
 }
 
