@@ -1,0 +1,15 @@
+-------------------------------------------------------------------------------
+Test set: com.example.CourierCreateTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 2.819 s <<< FAILURE! - in com.example.CourierCreateTest
+duplicateCourierCannotBeCreated(com.example.CourierCreateTest)  Time elapsed: 1.295 s  <<< ERROR!
+java.lang.ClassCastException: class java.lang.String cannot be cast to class java.lang.Boolean (java.lang.String and java.lang.Boolean are in module java.base of loader 'bootstrap')
+	at com.example.CourierCreateTest.duplicateCourierCannotBeCreated(CourierCreateTest.java:49)
+
+duplicateCourierCannotBeCreated(com.example.CourierCreateTest)  Time elapsed: 1.295 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at com.example.CourierCreateTest.tearDown(CourierCreateTest.java:25)
+
