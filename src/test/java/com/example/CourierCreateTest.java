@@ -35,8 +35,7 @@ public class CourierCreateTest {
         boolean isCourierCreated = response.extract().path("ok");
 
         assertTrue("Courier is not created", isCourierCreated);
-        assertEquals("Courier is not created", statusCode, 201);
-
+        assertEquals("Status code is incorrect", 201,  statusCode);
     }
 
     @Test
@@ -46,9 +45,11 @@ public class CourierCreateTest {
 
         ValidatableResponse response = courierClient.create(courier);
 
-        String errorMessage = response.extract().path("message");
+        int statusCode = response.extract().statusCode();
+        boolean errorMessage = response.extract().path("message");
 
-        assertTrue("Courier is not created", Boolean.parseBoolean(errorMessage));
-        assertEquals("Courier is not created", 409, 409);
+        assertTrue("Courier is not created", errorMessage);
+        assertEquals("Courier is not created", 409, statusCode);
     }
 }
+

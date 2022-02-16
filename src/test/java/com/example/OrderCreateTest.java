@@ -9,6 +9,7 @@ import org.junit.runners.Parameterized;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 
 @RunWith(Parameterized.class)
@@ -41,7 +42,7 @@ public class OrderCreateTest {
         int statusCode = response.extract().statusCode();
         Integer isOrderCreated = response.extract().path("track");
 
-        assertEquals("Status code is incorrect", statusCode, 500);
-        assertEquals("Order is not created", isOrderCreated, null);
+        assertEquals("Status code is incorrect", 500, statusCode);
+        assertNull("Order is not created", null);
     }
 }

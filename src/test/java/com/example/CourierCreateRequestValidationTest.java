@@ -39,10 +39,10 @@ public class CourierCreateRequestValidationTest {
         ValidatableResponse response = new CourierClient().create(courier);
 
         int statusCode = response.extract().statusCode();
-        boolean message = response.extract().path("message");
+        String message = response.extract().path("message");
 
-        assertEquals("Status code is incorrect", statusCode, 404);
-        assertTrue("Courier is not created", message);
+        assertEquals("Status code is incorrect", 400, statusCode);
+        assertTrue("Courier is not created", Boolean.parseBoolean(message));
     }
 
     @Test
@@ -53,10 +53,10 @@ public class CourierCreateRequestValidationTest {
         ValidatableResponse response = new CourierClient().create(courier);
 
         int statusCode = response.extract().statusCode();
-        boolean message = response.extract().path("message");
+        String message = response.extract().path("message");
 
-        assertEquals("Status code is incorrect", statusCode, 404);
-        assertTrue("Courier is not created", message);
+        assertEquals("Status code is incorrect", 400, statusCode);
+        assertTrue("Courier is not created", Boolean.parseBoolean(message));
 
     }
     @Test
@@ -67,10 +67,10 @@ public class CourierCreateRequestValidationTest {
         ValidatableResponse response = new CourierClient().create(courier);
 
         int statusCode = response.extract().statusCode();
-        boolean message = response.extract().path("message");
+        String message = response.extract().path("message");
 
-        assertEquals("Status code is incorrect", statusCode, 404);
-        assertTrue("Courier is not created", message);
+        assertEquals("Status code is incorrect", 400, statusCode);
+        assertTrue("Courier is not created", Boolean.parseBoolean(message));
     }
 }
 
