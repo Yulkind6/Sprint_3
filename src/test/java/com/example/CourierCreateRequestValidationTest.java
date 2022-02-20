@@ -1,3 +1,4 @@
+/// не поняла, как прикрепляется отчет:) на всякий случай ссылка: http://192.168.0.10:52509/index.html# но один тест все равно падает:( 
 package com.example;
 
 import io.qameta.allure.junit4.DisplayName;
