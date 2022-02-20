@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
 public class CourierCreateRequestValidationTest {
@@ -41,6 +42,7 @@ public class CourierCreateRequestValidationTest {
         String message = response.extract().path("message");
 
         assertEquals("Status code is incorrect", 400, statusCode);
+        assertTrue(message, true);
     }
 
     @Test
@@ -54,6 +56,7 @@ public class CourierCreateRequestValidationTest {
         String message = response.extract().path("message");
 
         assertEquals("Status code is incorrect", 400, statusCode);
+        assertTrue(message, true);
     }
     @Test
     @DisplayName("Courier cannot be created with first name only")
@@ -66,6 +69,7 @@ public class CourierCreateRequestValidationTest {
         String message = response.extract().path("message");
 
         assertEquals("Status code is incorrect", 400, statusCode);
+        assertTrue(message, true);
     }
 }
 

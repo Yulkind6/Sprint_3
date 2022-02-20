@@ -43,6 +43,6 @@ public class OrderCreateTest {
         Integer isOrderCreated = response.extract().path("track");
 
         assertEquals("Status code is incorrect", 500, statusCode);
-        assertNull("Order is not created", null);
+        assertNull("Order is not created", isOrderCreated);
     }
 }

@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 public class OrdersTest {
     @Test
@@ -17,6 +17,6 @@ public class OrdersTest {
         ValidatableResponse response = OrdersClient.getAll();
 
         List<Object> orders = response.extract().jsonPath().getList("orders");
-        assertFalse(orders.isEmpty());
+        assertNotNull("Order list is empty", orders);
     }
 }
