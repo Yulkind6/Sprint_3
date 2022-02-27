@@ -1,3 +1,4 @@
+// ложится тест duplicateCourierCannotBeCreated, если бы мог подсказать, что с ним не так, была бы очень благодарна :)
 package com.example;
 
 import io.qameta.allure.junit4.DisplayName;
