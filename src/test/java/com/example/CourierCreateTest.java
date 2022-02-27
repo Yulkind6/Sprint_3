@@ -6,7 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class CourierCreateTest {
 
@@ -49,6 +50,6 @@ public class CourierCreateTest {
         String errorMessage = response.extract().path("message");
 
         assertEquals("Courier is not created", 409, statusCode);
-        assertTrue(errorMessage, true);
+        assertEquals("Courier is not created", "Этот логин уже используется. Попробуйте другой.", errorMessage);
     }
 }

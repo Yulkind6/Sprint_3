@@ -1,4 +1,3 @@
-//allure отчет не сформировался:(
 package com.example;
 
 import org.apache.commons.lang3.RandomStringUtils;

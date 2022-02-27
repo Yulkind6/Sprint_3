@@ -1,4 +1,3 @@
-/// не поняла, как прикрепляется отчет:) на всякий случай ссылка: http://192.168.0.10:52509/index.html# но один тест все равно падает:( 
 package com.example;
 
 import io.qameta.allure.junit4.DisplayName;
@@ -8,7 +7,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
 public class CourierCreateRequestValidationTest {
@@ -43,7 +41,7 @@ public class CourierCreateRequestValidationTest {
         String message = response.extract().path("message");
 
         assertEquals("Status code is incorrect", 400, statusCode);
-        assertTrue(message, true);
+        assertEquals("Courier cannot be created with login only", "Недостаточно данных для создания учетной записи", message);
     }
 
     @Test
@@ -57,7 +55,7 @@ public class CourierCreateRequestValidationTest {
         String message = response.extract().path("message");
 
         assertEquals("Status code is incorrect", 400, statusCode);
-        assertTrue(message, true);
+        assertEquals("Courier cannot be created with password only", "Недостаточно данных для создания учетной записи", message);
     }
     @Test
     @DisplayName("Courier cannot be created with first name only")
@@ -70,7 +68,7 @@ public class CourierCreateRequestValidationTest {
         String message = response.extract().path("message");
 
         assertEquals("Status code is incorrect", 400, statusCode);
-        assertTrue(message, true);
+        assertEquals("Courier cannot be created with first name only", "Недостаточно данных для создания учетной записи", message);
     }
 }
 
